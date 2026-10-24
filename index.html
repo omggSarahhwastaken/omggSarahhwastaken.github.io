@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarah — Apps & Projects</title>
+<meta name="description" content="Download Sarah's Toolkit and Watchblox — free Windows apps by Sarah.">
+<style>
+  :root{
+    --bg:#0a0a0a; --card:#141416; --card2:#191b1d; --border:#26262a;
+    --text:#f5f5f5; --muted:#a7a7ad; --pink:#ba2c64; --red:#ff3b3b; --purple:#8b5cf6;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.6}
+  a{color:inherit}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+  header{padding:72px 0 36px;text-align:center}
+  .avatar{width:88px;height:88px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:800;background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff}
+  h1{font-size:42px;line-height:1.1;letter-spacing:-.02em}
+  .handle{color:var(--muted);margin-top:6px}
+  .tagline{max-width:620px;margin:18px auto 0;color:#d8d8dc;font-size:18px}
+  .links{margin-top:24px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-block;padding:11px 20px;border-radius:999px;border:1px solid var(--border);background:var(--card);text-decoration:none;font-weight:600;font-size:15px}
+  .btn:hover{border-color:#3d3d44}
+  section{padding:28px 0}
+  h2{font-size:24px;margin-bottom:14px}
+  .about{color:#d8d8dc;max-width:720px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:720px){.grid{grid-template-columns:1fr}h1{font-size:34px}}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column}
+  .card.watch{background:var(--card2)}
+  .badge{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  .badge.toolkit{background:rgba(139,92,246,.18);color:#c4b5fd}
+  .badge.watch{background:rgba(255,59,59,.15);color:#ff8a8a}
+  .card h3{font-size:22px;margin-bottom:6px}
+  .version{color:var(--muted);font-size:14px;margin-bottom:10px}
+  .card p{color:#d8d8dc;font-size:15px}
+  .features{list-style:none;margin:16px 0;color:#c9c9ce;font-size:14.5px}
+  .features li{padding:4px 0 4px 22px;position:relative}
+  .features li::before{content:"✓";position:absolute;left:0;color:#7ee2a0;font-weight:700}
+  .spacer{flex:1}
+  .download{display:block;text-align:center;padding:13px;border-radius:12px;text-decoration:none;font-weight:700;margin-top:8px;color:#fff}
+  .download.toolkit{background:var(--purple)}
+  .download.watch{background:var(--red)}
+  .sublinks{display:flex;gap:14px;justify-content:center;margin-top:12px;font-size:14px}
+  .sublinks a{color:var(--muted)}
+  .install{margin-top:16px;background:#0d0d0f;border:1px solid var(--border);border-radius:10px;padding:10px 12px}
+  .install label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+  .install-row{display:flex;gap:8px;align-items:center}
+  code{font-family:ui-monospace,Consolas,monospace;font-size:12px;word-break:break-all;flex:1}
+  .copy{border:1px solid var(--border);background:var(--card);color:var(--text);border-radius:8px;padding:6px 10px;cursor:pointer;font-size:13px;white-space:nowrap}
+  .note{color:var(--muted);font-size:13.5px;margin-top:12px}
+  footer{padding:36px 0 48px;text-align:center;color:var(--muted);font-size:14px;border-top:1px solid var(--border);margin-top:28px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="avatar">S</div>
+    <h1>Hey, I'm Sarah</h1>
+    <p class="handle">@omggSarahhwastaken</p>
+    <p class="tagline">I build free Windows apps, make Roblox games, and play live piano in VRChat. Everything I release is below — free to download, no accounts, no ads.</p>
+    <div class="links">
+      <a class="btn" href="https://github.com/omggSarahhwastaken" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="#downloads">Downloads</a>
+      <a class="btn" href="#about">About me</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>About me</h2>
+    <p class="about">
+      I'm a developer and musician. By day I build tools I actually want to use — a Windows
+      cleanup/optimization app and a Roblox companion app, both free and self-updating.
+      I also build Roblox hangout games (my current one is <strong>Midnight Cove</strong>),
+      make alternative rock / piano music, and perform live acoustic grand piano in VRChat
+      as <strong>sarah.live</strong> with my group THE STAR SEEKERS.
+    </p>
+    <p class="note">Want a feature or found a bug? Open an issue on the project's GitHub page — that's the fastest way to reach me.</p>
+  </section>
+
+  <section id="downloads">
+    <h2>Downloads</h2>
+    <div class="grid">
+
+      <article class="card">
+        <span class="badge toolkit">Windows 11 · Free</span>
+        <h3>Sarah's Toolkit</h3>
+        <p class="version">Latest: v2.6.0 · Windows 10/11 (64-bit)</p>
+        <p>A polished, point-and-click Windows cleanup, debloat, and optimization app. Quick Clean for a fast tidy-up, Full Clean when you want everything, plus live system health, performance tracking, and safe gaming tweaks — all in one dark, no-nonsense app.</p>
+        <ul class="features">
+          <li>Quick Clean &amp; Full Clean with freed-space readout</li>
+          <li>Conservative debloat — only junk apps, never the ones people use</li>
+          <li>Optimize &amp; Customize tweaks with one-click revert</li>
+          <li>Health score, boot time, disk &amp; battery health dashboard</li>
+          <li>Self-updating — install once, stay current</li>
+        </ul>
+        <div class="spacer"></div>
+        <a class="download toolkit" href="https://github.com/omggSarahhwastaken/SarahsToolkit/releases/latest/download/SarahsToolkitInstaller_x64.exe">Download Sarah's Toolkit</a>
+        <div class="sublinks">
+          <a href="https://github.com/omggSarahhwastaken/SarahsToolkit" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://github.com/omggSarahhwastaken/SarahsToolkit/releases" target="_blank" rel="noopener">All releases</a>
+        </div>
+        <div class="install">
+          <label>Or install from PowerShell:</label>
+          <div class="install-row">
+            <code>irm https://raw.githubusercontent.com/omggSarahhwastaken/SarahsToolkit/main/install.ps1 | iex</code>
+            <button class="copy" data-copy="irm https://raw.githubusercontent.com/omggSarahhwastaken/SarahsToolkit/main/install.ps1 | iex">Copy</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card watch">
+        <span class="badge watch">Roblox · Free</span>
+        <h3>Watchblox</h3>
+        <p class="version">Latest: v1.4.1 · Windows 10/11 (64-bit)</p>
+        <p><strong>Know when your friends play.</strong> A Roblox friend &amp; presence companion for Windows. Enter your username once and get a live dashboard of who's online, in-game, or in Studio — with a Join button that drops you straight into a friend's exact server. No browser, no extension, no login needed.</p>
+        <ul class="features">
+          <li>Live presence dashboard with avatars &amp; game names</li>
+          <li>One-click Join into a friend's exact server</li>
+          <li>Activity feed &amp; Windows notifications</li>
+          <li>Profiles, mutual friends &amp; friend network graph</li>
+          <li>Public data only — no cookie, no telemetry</li>
+        </ul>
+        <div class="spacer"></div>
+        <a class="download watch" href="https://github.com/omggSarahhwastaken/Watchblox/releases/latest/download/WatchbloxInstaller_x64.exe">Download Watchblox</a>
+        <div class="sublinks">
+          <a href="https://github.com/omggSarahhwastaken/Watchblox" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://github.com/omggSarahhwastaken/Watchblox/releases" target="_blank" rel="noopener">All releases</a>
+        </div>
+        <div class="install">
+          <label>Or install from PowerShell:</label>
+          <div class="install-row">
+            <code>irm https://raw.githubusercontent.com/omggSarahhwastaken/Watchblox/main/install.ps1 | iex</code>
+            <button class="copy" data-copy="irm https://raw.githubusercontent.com/omggSarahhwastaken/Watchblox/main/install.ps1 | iex">Copy</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <p class="note">Both installers are unsigned, so Windows SmartScreen may warn on first run — click “More info” → “Run anyway”. Download buttons always point to the latest release, so this page never goes stale.</p>
+  </section>
+
+  <section id="more">
+    <h2>Also working on</h2>
+    <div class="grid">
+      <article class="card">
+        <span class="badge toolkit">Roblox · In progress</span>
+        <h3>Midnight Cove</h3>
+        <p>A cozy midnight hangout game on Roblox — waterfront pier, gazebo, campfire, and a custom starry sky. Built to chill with friends, not grind.</p>
+      </article>
+      <article class="card">
+        <span class="badge watch">VRChat · Music</span>
+        <h3>Live Piano — sarah.live</h3>
+        <p>I perform live acoustic grand piano in VRChat with my 18+ group THE STAR SEEKERS, and make alternative rock / piano music in my spare time.</p>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Sarah · <a href="https://github.com/omggSarahhwastaken" target="_blank" rel="noopener">github.com/omggSarahhwastaken</a>
+  </footer>
+
+</div>
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click', function(){
+    navigator.clipboard.writeText(b.getAttribute('data-copy')).then(function(){
+      var old=b.textContent; b.textContent='Copied ✓';
+      setTimeout(function(){b.textContent=old;},1600);
+    });
+  });
+});
+</script>
+</body>
+</html>
