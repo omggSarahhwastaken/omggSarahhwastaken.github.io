@@ -79,6 +79,26 @@
   .copy{border:1px solid var(--border);background:var(--card);color:var(--text);border-radius:8px;padding:6px 11px;cursor:pointer;font-size:13px;white-space:nowrap;transition:border-color .2s ease,transform .2s ease}
   .copy:hover{border-color:#4a4a55;transform:translateY(-1px)}
 
+  /* ---- feature detail ---- */
+  .feat h4{font-size:16.5px;margin:16px 0 4px}
+  .feat h4:first-child{margin-top:0}
+  .feat p{color:#c9c9ce;font-size:15px;margin-bottom:6px}
+  /* ---- install steps ---- */
+  .steps{list-style:none;counter-reset:step}
+  .steps li{counter-increment:step;display:flex;gap:16px;margin:18px 0}
+  .steps li::before{content:counter(step);flex:none;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;background:rgba(255,255,255,.08);border:1px solid var(--border)}
+  .steps li.toolkit-step::before{background:rgba(139,92,246,.25);border-color:rgba(139,92,246,.5)}
+  .steps li.watch-step::before{background:rgba(255,59,59,.2);border-color:rgba(255,59,59,.45)}
+  .steps b{display:block;font-size:16px}
+  .steps span{color:#c9c9ce;font-size:15px}
+  /* ---- FAQ ---- */
+  .faq{max-width:880px}
+  details{background:rgba(20,20,22,.92);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin:12px 0;transition:border-color .25s ease}
+  details:hover{border-color:#3d3d44}
+  summary{cursor:pointer;font-weight:650;font-size:16px;list-style:none}
+  summary::-webkit-details-marker{display:none}
+  details p{color:#c9c9ce;font-size:15px;margin-top:8px}
+
   footer{padding:38px 0 50px;text-align:center;color:var(--muted);font-size:14px;border-top:1px solid var(--border);margin-top:30px}
 
   /* ---- scroll reveal ---- */
@@ -110,7 +130,9 @@
       <div class="links">
         <a class="btn" href="https://github.com/omggSarahhwastaken" target="_blank" rel="noopener">GitHub</a>
         <a class="btn" href="#downloads">Downloads</a>
-        <a class="btn" href="#about">About me</a>
+        <a class="btn" href="#features">Features</a>
+        <a class="btn" href="#install">How to install</a>
+        <a class="btn" href="#faq">FAQ</a>
       </div>
     </div>
   </header>
@@ -195,6 +217,117 @@
 
     </div>
     <p class="note reveal">Both installers are unsigned, so Windows SmartScreen may warn on first run — click “More info” → “Run anyway”. Download buttons always point to the latest release, so this page never goes stale.</p>
+  </section>
+
+  <section id="features">
+    <h2 class="reveal">What each app actually does</h2>
+    <div class="grid">
+
+      <article class="card toolkit-card feat reveal d1">
+        <div class="card-head">
+          <img class="appicon" src="assets/toolkit.png" alt="Sarah's Toolkit icon" width="68" height="68">
+          <div>
+            <span class="badge toolkit">Sarah's Toolkit</span>
+            <h3>Clean, debloat, optimize — safely</h3>
+          </div>
+        </div>
+        <h4>Cleanup</h4>
+        <p><strong>Quick Clean</strong> is the fast path: temps, caches, shaders, and browser junk in seconds, with a freed-space readout. <strong>Full Clean</strong> goes further — update caches, log bloat, and everything else — with live progress so you see exactly what's happening.</p>
+        <h4>Debloat</h4>
+        <p>Only junk preinstalled apps are listed, and only apps actually installed on your PC show up. Nothing is removed unless you check it — and Edge, Copilot, Xbox / Game Bar, OneDrive, Solitaire, Clipchamp, Media Player, Films &amp; TV, and Office Hub are never listed at all.</p>
+        <h4>Optimize &amp; Customize</h4>
+        <p>Registry tweaks for privacy, gaming, and performance with live state detection, so the app shows what's actually applied — and every tweak can be reverted in one click. Same engine drives taskbar, Explorer, and Start menu tweaks.</p>
+        <h4>Health &amp; Tools</h4>
+        <p>A 0–100 Health Score from disk space, updates, drive health, and battery health, plus boot time, per-disk SSD health, and a performance tracker that logs CPU, RAM, and temps while you game. Under Tools: SSD ReTrim, DNS selector, service optimizer, startup manager, network rescue, game ping test, and Defender exclusions for known-safe apps.</p>
+        <h4>Built to be low-friction</h4>
+        <p>Self-contained — no .NET download, no prerequisites, installs in seconds. Self-updating, and your settings survive updates.</p>
+      </article>
+
+      <article class="card watch feat reveal d2">
+        <div class="card-head">
+          <img class="appicon" src="assets/watchblox.png" alt="Watchblox icon" width="68" height="68">
+          <div>
+            <span class="badge watch">Watchblox</span>
+            <h3>Know when your friends play</h3>
+          </div>
+        </div>
+        <h4>Live dashboard</h4>
+        <p>Enter your Roblox username once and Watchblox keeps a live board of your friends: who's offline, online, in-game, or in Studio — with avatars, game names, search, and filters.</p>
+        <h4>Join a friend's exact server</h4>
+        <p>When a friend is in-game, one Join button drops you straight into their exact server. No browser, no extension — you just need Roblox Player installed.</p>
+        <h4>Activity feed &amp; notifications</h4>
+        <p>Every coming and going is logged in an activity feed, and Windows toast notifications tell you the moment a friend hops into a game — so you don't have to keep checking.</p>
+        <h4>Profiles, mutuals &amp; the friend graph</h4>
+        <p>Open any friend's profile for their avatar, bio, join date, groups, and roles. The Mutuals page shows who you have in common, and the network graph maps your whole friend circle — drag to pan, scroll to zoom.</p>
+        <h4>Private by design</h4>
+        <p>No login or cookie required — everything comes from Roblox's public data. No telemetry, no accounts, and all settings and history stay on your PC in %LOCALAPPDATA%\Watchblox. You can also watch anyone by username, even if they're not your friend.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="install">
+    <h2 class="reveal">How to install</h2>
+    <div class="grid">
+
+      <article class="card toolkit-card reveal d1">
+        <span class="badge toolkit">Sarah's Toolkit</span>
+        <ol class="steps">
+          <li class="toolkit-step"><div><b>Download it</b><span>Click Download above, or paste the PowerShell line from the Toolkit card into PowerShell.</span></div></li>
+          <li class="toolkit-step"><div><b>Run the installer</b><span>It's unsigned, so SmartScreen may warn you — click “More info” → “Run anyway”. The code is public on GitHub, so you can check it yourself.</span></div></li>
+          <li class="toolkit-step"><div><b>Launch and go</b><span>Installs in seconds with no prerequisites. Windows will ask for admin once — cleanup and tweaks need it — then you're on the Home dashboard.</span></div></li>
+        </ol>
+      </article>
+
+      <article class="card watch reveal d2">
+        <span class="badge watch">Watchblox</span>
+        <ol class="steps">
+          <li class="watch-step"><div><b>Download it</b><span>Click Download above, or paste the PowerShell line from the Watchblox card into PowerShell.</span></div></li>
+          <li class="watch-step"><div><b>Run the installer</b><span>Same SmartScreen note: “More info” → “Run anyway”. No admin needed for Watchblox.</span></div></li>
+          <li class="watch-step"><div><b>Enter your Roblox username</b><span>That's it — no login, no password. Your friend dashboard fills in, and Join works as soon as a friend is in-game (with Roblox Player installed).</span></div></li>
+        </ol>
+      </article>
+
+    </div>
+    <p class="note reveal">To uninstall either app later: Windows Settings → Apps → find the app → Uninstall.</p>
+  </section>
+
+  <section id="faq">
+    <h2 class="reveal">FAQ</h2>
+    <div class="faq reveal">
+      <details>
+        <summary>Are both apps really free?</summary>
+        <p>Yes. No cost, no ads, no paywall, no accounts. Download, install, use them.</p>
+      </details>
+      <details>
+        <summary>Why does Windows SmartScreen warn me?</summary>
+        <p>Both installers are unsigned — signing certificates cost money, and these are free hobby projects. SmartScreen flags any unsigned installer. Click “More info” → “Run anyway”. Both projects' source code is public on GitHub if you want to check it.</p>
+      </details>
+      <details>
+        <summary>Do I need to install .NET or anything else first?</summary>
+        <p>No. Sarah's Toolkit is self-contained — it brings its own runtime and installs in seconds. Watchblox only needs Roblox Player installed if you want to use the Join button; the dashboard, feed, and notifications work without it.</p>
+      </details>
+      <details>
+        <summary>Does Watchblox need my Roblox password or login?</summary>
+        <p>No. Friend lists and presence are public Roblox data, so no cookie, password, or login is required. Nothing about your account is sent anywhere — there's no telemetry at all.</p>
+      </details>
+      <details>
+        <summary>Is Sarah's Toolkit safe? Will it delete something I need?</summary>
+        <p>Cleanup only touches temps, caches, and junk. Debloat only removes apps you check, and it never lists apps people commonly use (Edge, Copilot, Xbox, OneDrive, and the rest). Tweaks show their live state and can be reverted in one click.</p>
+      </details>
+      <details>
+        <summary>What versions of Windows do they work on?</summary>
+        <p>Windows 10 and 11, 64-bit, for both apps.</p>
+      </details>
+      <details>
+        <summary>How do updates work?</summary>
+        <p>Both apps self-update — install once and stay current. The Download buttons on this page always point to the latest release, too.</p>
+      </details>
+      <details>
+        <summary>Where do I report a bug or request a feature?</summary>
+        <p>Open an issue on the project's GitHub page — Sarah's Toolkit or Watchblox. That's the fastest way to reach me.</p>
+      </details>
+    </div>
   </section>
 
   <footer>
