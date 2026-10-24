@@ -5,71 +5,120 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sarah — Apps & Projects</title>
 <meta name="description" content="Download Sarah's Toolkit and Watchblox — free Windows apps by Sarah.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <style>
   :root{
     --bg:#0a0a0a; --card:#141416; --card2:#191b1d; --border:#26262a;
     --text:#f5f5f5; --muted:#a7a7ad; --pink:#ba2c64; --red:#ff3b3b; --purple:#8b5cf6;
-    --radius:16px;
+    --radius:18px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.6}
-  a{color:inherit}
-  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
-  header{padding:72px 0 36px;text-align:center}
-  .avatar{width:88px;height:88px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:800;background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff}
-  h1{font-size:42px;line-height:1.1;letter-spacing:-.02em}
-  .handle{color:var(--muted);margin-top:6px}
-  .tagline{max-width:620px;margin:18px auto 0;color:#d8d8dc;font-size:18px}
-  .links{margin-top:24px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-  .btn{display:inline-block;padding:11px 20px;border-radius:999px;border:1px solid var(--border);background:var(--card);text-decoration:none;font-weight:600;font-size:15px}
-  .btn:hover{border-color:#3d3d44}
-  section{padding:28px 0}
-  h2{font-size:24px;margin-bottom:14px}
-  .about{color:#d8d8dc;max-width:720px}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-  @media(max-width:720px){.grid{grid-template-columns:1fr}h1{font-size:34px}}
-  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column}
-  .card.watch{background:var(--card2)}
-  .badge{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.6;overflow-x:hidden}
+
+  /* ---- glow background ---- */
+  .glow{position:fixed;border-radius:50%;filter:blur(130px);pointer-events:none;z-index:0;opacity:.5}
+  .glow.purple{width:560px;height:560px;background:#5b21b6;top:-180px;left:-120px;animation:drift1 22s ease-in-out infinite alternate}
+  .glow.red{width:520px;height:520px;background:#7f1d1d;bottom:-200px;right:-120px;animation:drift2 26s ease-in-out infinite alternate}
+  .glow.pink{width:380px;height:380px;background:var(--pink);top:44%;left:58%;opacity:.22;animation:drift1 30s ease-in-out infinite alternate-reverse}
+  @keyframes drift1{from{transform:translate(0,0) scale(1)}to{transform:translate(70px,50px) scale(1.12)}}
+  @keyframes drift2{from{transform:translate(0,0) scale(1.08)}to{transform:translate(-60px,-46px) scale(.96)}}
+  .dots{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.055) 1px,transparent 1px);background-size:26px 26px}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+
+  /* ---- hero (wide, desktop-first) ---- */
+  header{padding:84px 0 44px;display:flex;align-items:center;gap:44px}
+  .avatar{width:132px;height:132px;flex:none;border-radius:32px;display:flex;align-items:center;justify-content:center;font-size:58px;font-weight:800;background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;box-shadow:0 0 60px rgba(186,44,100,.45);animation:floaty 6s ease-in-out infinite}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  h1{font-size:56px;line-height:1.05;letter-spacing:-.02em}
+  .handle{color:var(--muted);margin-top:8px;font-size:17px}
+  .tagline{max-width:640px;margin-top:16px;color:#d8d8dc;font-size:19px}
+  .links{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:12px 22px;border-radius:999px;border:1px solid var(--border);background:rgba(20,20,22,.85);text-decoration:none;font-weight:600;font-size:15px;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+  .btn:hover{transform:translateY(-2px);border-color:#4a4a55;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+  .gradient-line{height:3px;border-radius:99px;margin:8px 0 10px;background:linear-gradient(90deg,var(--pink),var(--purple),var(--red),var(--pink));background-size:300% 100%;animation:slidegrad 9s linear infinite}
+  @keyframes slidegrad{from{background-position:0% 0}to{background-position:300% 0}}
+
+  section{padding:30px 0}
+  h2{font-size:27px;margin-bottom:14px}
+  .about{color:#d8d8dc;max-width:820px;font-size:17px}
+  .note{color:var(--muted);font-size:14px;margin-top:12px}
+
+  /* ---- app cards ---- */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .card{background:rgba(20,20,22,.92);border:1px solid var(--border);border-radius:var(--radius);padding:32px;display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+  .card.watch{background:rgba(25,27,29,.92)}
+  .card:hover{transform:translateY(-7px)}
+  .card.toolkit-card:hover{border-color:rgba(139,92,246,.65);box-shadow:0 18px 46px rgba(139,92,246,.20)}
+  .card.watch:hover{border-color:rgba(255,59,59,.6);box-shadow:0 18px 46px rgba(255,59,59,.17)}
+  .card-head{display:flex;align-items:center;gap:18px;margin-bottom:16px}
+  .appicon{width:68px;height:68px;border-radius:16px;object-fit:cover;flex:none;transition:transform .3s ease}
+  .card:hover .appicon{transform:scale(1.07) rotate(-2deg)}
+  .badge{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:7px}
   .badge.toolkit{background:rgba(139,92,246,.18);color:#c4b5fd}
   .badge.watch{background:rgba(255,59,59,.15);color:#ff8a8a}
-  .card h3{font-size:22px;margin-bottom:6px}
+  .card h3{font-size:24px;line-height:1.2}
   .version{color:var(--muted);font-size:14px;margin-bottom:10px}
-  .card p{color:#d8d8dc;font-size:15px}
-  .features{list-style:none;margin:16px 0;color:#c9c9ce;font-size:14.5px}
-  .features li{padding:4px 0 4px 22px;position:relative}
+  .card p{color:#d8d8dc;font-size:15.5px}
+  .features{list-style:none;margin:18px 0;color:#c9c9ce;font-size:15px}
+  .features li{padding:5px 0 5px 24px;position:relative}
   .features li::before{content:"✓";position:absolute;left:0;color:#7ee2a0;font-weight:700}
   .spacer{flex:1}
-  .download{display:block;text-align:center;padding:13px;border-radius:12px;text-decoration:none;font-weight:700;margin-top:8px;color:#fff}
-  .download.toolkit{background:var(--purple)}
-  .download.watch{background:var(--red)}
-  .sublinks{display:flex;gap:14px;justify-content:center;margin-top:12px;font-size:14px}
-  .sublinks a{color:var(--muted)}
-  .install{margin-top:16px;background:#0d0d0f;border:1px solid var(--border);border-radius:10px;padding:10px 12px}
+  .download{position:relative;overflow:hidden;display:block;text-align:center;padding:14px;border-radius:12px;text-decoration:none;font-weight:700;margin-top:8px;color:#fff;transition:transform .25s ease,box-shadow .25s ease}
+  .download:hover{transform:translateY(-2px)}
+  .download.toolkit{background:var(--purple)} .download.toolkit:hover{box-shadow:0 10px 28px rgba(139,92,246,.4)}
+  .download.watch{background:var(--red)} .download.watch:hover{box-shadow:0 10px 28px rgba(255,59,59,.38)}
+  .download::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);transition:left .6s ease}
+  .download:hover::after{left:130%}
+  .sublinks{display:flex;gap:16px;justify-content:center;margin-top:13px;font-size:14px}
+  .sublinks a{color:var(--muted)} .sublinks a:hover{color:var(--text)}
+  .install{margin-top:17px;background:#0d0d0f;border:1px solid var(--border);border-radius:10px;padding:11px 13px}
   .install label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
   .install-row{display:flex;gap:8px;align-items:center}
   code{font-family:ui-monospace,Consolas,monospace;font-size:12px;word-break:break-all;flex:1}
-  .copy{border:1px solid var(--border);background:var(--card);color:var(--text);border-radius:8px;padding:6px 10px;cursor:pointer;font-size:13px;white-space:nowrap}
-  .note{color:var(--muted);font-size:13.5px;margin-top:12px}
-  footer{padding:36px 0 48px;text-align:center;color:var(--muted);font-size:14px;border-top:1px solid var(--border);margin-top:28px}
+  .copy{border:1px solid var(--border);background:var(--card);color:var(--text);border-radius:8px;padding:6px 11px;cursor:pointer;font-size:13px;white-space:nowrap;transition:border-color .2s ease,transform .2s ease}
+  .copy:hover{border-color:#4a4a55;transform:translateY(-1px)}
+
+  footer{padding:38px 0 50px;text-align:center;color:var(--muted);font-size:14px;border-top:1px solid var(--border);margin-top:30px}
+
+  /* ---- scroll reveal ---- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}
+
+  @media(max-width:820px){
+    header{flex-direction:column;text-align:center;padding-top:56px;gap:24px}
+    .links{justify-content:center}.grid{grid-template-columns:1fr}h1{font-size:38px}
+    .wrap{padding:0 20px}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation-duration:.001s !important;transition-duration:.001s !important}
+    html{scroll-behavior:auto}
+  }
 </style>
 </head>
 <body>
+<div class="glow purple"></div><div class="glow red"></div><div class="glow pink"></div><div class="dots"></div>
 <div class="wrap">
 
   <header>
     <div class="avatar">S</div>
-    <h1>Hey, I'm Sarah</h1>
-    <p class="handle">@omggSarahhwastaken</p>
-    <p class="tagline">I build free Windows apps. Everything I release is below — free to download, no accounts, no ads.</p>
-    <div class="links">
-      <a class="btn" href="https://github.com/omggSarahhwastaken" target="_blank" rel="noopener">GitHub</a>
-      <a class="btn" href="#downloads">Downloads</a>
-      <a class="btn" href="#about">About me</a>
+    <div>
+      <h1>Hey, I'm Sarah</h1>
+      <p class="handle">@omggSarahhwastaken</p>
+      <p class="tagline">I build free Windows apps. Everything I release is below — free to download, no accounts, no ads.</p>
+      <div class="links">
+        <a class="btn" href="https://github.com/omggSarahhwastaken" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="#downloads">Downloads</a>
+        <a class="btn" href="#about">About me</a>
+      </div>
     </div>
   </header>
+  <div class="gradient-line"></div>
 
-  <section id="about">
+  <section id="about" class="reveal">
     <h2>About me</h2>
     <p class="about">
       I'm a developer who builds tools I actually want to use — a Windows
@@ -79,12 +128,17 @@
   </section>
 
   <section id="downloads">
-    <h2>Downloads</h2>
+    <h2 class="reveal">Downloads</h2>
     <div class="grid">
 
-      <article class="card">
-        <span class="badge toolkit">Windows 11 · Free</span>
-        <h3>Sarah's Toolkit</h3>
+      <article class="card toolkit-card reveal d1">
+        <div class="card-head">
+          <img class="appicon" src="assets/toolkit.png" alt="Sarah's Toolkit icon" width="68" height="68">
+          <div>
+            <span class="badge toolkit">Windows 11 · Free</span>
+            <h3>Sarah's Toolkit</h3>
+          </div>
+        </div>
         <p class="version">Latest: v2.6.0 · Windows 10/11 (64-bit)</p>
         <p>A polished, point-and-click Windows cleanup, debloat, and optimization app. Quick Clean for a fast tidy-up, Full Clean when you want everything, plus live system health, performance tracking, and safe gaming tweaks — all in one dark, no-nonsense app.</p>
         <ul class="features">
@@ -109,9 +163,14 @@
         </div>
       </article>
 
-      <article class="card watch">
-        <span class="badge watch">Roblox · Free</span>
-        <h3>Watchblox</h3>
+      <article class="card watch reveal d2">
+        <div class="card-head">
+          <img class="appicon" src="assets/watchblox.png" alt="Watchblox icon" width="68" height="68">
+          <div>
+            <span class="badge watch">Roblox · Free</span>
+            <h3>Watchblox</h3>
+          </div>
+        </div>
         <p class="version">Latest: v1.4.1 · Windows 10/11 (64-bit)</p>
         <p><strong>Know when your friends play.</strong> A Roblox friend &amp; presence companion for Windows. Enter your username once and get a live dashboard of who's online, in-game, or in Studio — with a Join button that drops you straight into a friend's exact server. No browser, no extension, no login needed.</p>
         <ul class="features">
@@ -137,7 +196,7 @@
       </article>
 
     </div>
-    <p class="note">Both installers are unsigned, so Windows SmartScreen may warn on first run — click “More info” → “Run anyway”. Download buttons always point to the latest release, so this page never goes stale.</p>
+    <p class="note reveal">Both installers are unsigned, so Windows SmartScreen may warn on first run — click “More info” → “Run anyway”. Download buttons always point to the latest release, so this page never goes stale.</p>
   </section>
 
   <footer>
@@ -154,6 +213,10 @@ document.querySelectorAll('.copy').forEach(function(b){
     });
   });
 });
+var io=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 </script>
 </body>
 </html>
