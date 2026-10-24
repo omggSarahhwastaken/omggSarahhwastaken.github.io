@@ -91,7 +91,13 @@
   .steps li.watch-step::before{background:rgba(255,59,59,.2);border-color:rgba(255,59,59,.45)}
   .steps b{display:block;font-size:16px}
   .steps span{color:#c9c9ce;font-size:15px}
-  /* ---- FAQ ---- */
+  /* ---- badges, whats-new, faq search ---- */
+  .badges{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 12px}
+  .badges img{height:20px;border-radius:4px}
+  .wn-body{color:#c9c9ce;font-size:15px;white-space:pre-line}
+  .wn-meta{color:var(--muted);font-size:13.5px;margin-top:12px}
+  .faq-search{width:100%;max-width:880px;padding:13px 16px;border-radius:12px;border:1px solid var(--border);background:rgba(20,20,22,.92);color:var(--text);font-size:15.5px;margin-bottom:4px;outline:none}
+  .faq-search:focus{border-color:#4a4a55}
   .faq{max-width:880px}
   details{background:rgba(20,20,22,.92);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin:12px 0;transition:border-color .25s ease}
   details:hover{border-color:#3d3d44}
@@ -160,6 +166,10 @@
           </div>
         </div>
         <p class="version">Latest: v2.6.0 · Windows 10/11 (64-bit)</p>
+        <div class="badges">
+          <img src="https://img.shields.io/github/stars/omggSarahhwastaken/SarahsToolkit" alt="Sarah's Toolkit GitHub stars" loading="lazy">
+          <img src="https://img.shields.io/github/v/release/omggSarahhwastaken/SarahsToolkit" alt="Sarah's Toolkit latest release" loading="lazy">
+        </div>
         <p>A polished, point-and-click Windows cleanup, debloat, and optimization app. Quick Clean for a fast tidy-up, Full Clean when you want everything, plus live system health, performance tracking, and safe gaming tweaks — all in one dark, no-nonsense app.</p>
         <ul class="features">
           <li>Quick Clean &amp; Full Clean with freed-space readout</li>
@@ -192,6 +202,10 @@
           </div>
         </div>
         <p class="version">Latest: v1.4.1 · Windows 10/11 (64-bit)</p>
+        <div class="badges">
+          <img src="https://img.shields.io/github/stars/omggSarahhwastaken/Watchblox" alt="Watchblox GitHub stars" loading="lazy">
+          <img src="https://img.shields.io/github/v/release/omggSarahhwastaken/Watchblox" alt="Watchblox latest release" loading="lazy">
+        </div>
         <p><strong>Know when your friends play.</strong> A Roblox friend &amp; presence companion for Windows. Enter your username once and get a live dashboard of who's online, in-game, or in Studio — with a Join button that drops you straight into a friend's exact server. No browser, no extension, no login needed.</p>
         <ul class="features">
           <li>Live presence dashboard with avatars &amp; game names</li>
@@ -217,6 +231,38 @@
 
     </div>
     <p class="note reveal">Both installers are unsigned, so Windows SmartScreen may warn on first run — click “More info” → “Run anyway”. Download buttons always point to the latest release, so this page never goes stale.</p>
+  </section>
+
+  <section id="whats-new">
+    <h2 class="reveal">What's New</h2>
+    <p class="note reveal" style="margin-bottom:18px">Pulled live from GitHub — these update themselves when a new version ships.</p>
+    <div class="grid">
+
+      <article class="card toolkit-card reveal d1">
+        <div class="card-head">
+          <img class="appicon" src="assets/toolkit.png" alt="Sarah's Toolkit icon" width="68" height="68">
+          <div>
+            <span class="badge toolkit">Sarah's Toolkit</span>
+            <h3 id="wn-toolkit-title">v2.6.0</h3>
+          </div>
+        </div>
+        <p class="wn-body" id="wn-toolkit-body">Fixes the standby-memory purge (it was failing with status 0xC000000D), removes the tweak ledger — tweaks are detected live from the registry so the saved list and re-apply button are gone — and hardens settings saving so a bad read can never blank your config.</p>
+        <p class="wn-meta"><span id="wn-toolkit-date">Released Sep 28, 2026</span> · <a href="https://github.com/omggSarahhwastaken/SarahsToolkit/releases" target="_blank" rel="noopener">Full release notes</a></p>
+      </article>
+
+      <article class="card watch reveal d2">
+        <div class="card-head">
+          <img class="appicon" src="assets/watchblox.png" alt="Watchblox icon" width="68" height="68">
+          <div>
+            <span class="badge watch">Watchblox</span>
+            <h3 id="wn-watchblox-title">v1.4.1</h3>
+          </div>
+        </div>
+        <p class="wn-body" id="wn-watchblox-body">Hotfix: fixed a crash when opening a second friend profile (closing the profile window with X then clicking another network dot killed the app). The app now also writes crash details to crash.log in its data folder so any future crash can be diagnosed from the actual error.</p>
+        <p class="wn-meta"><span id="wn-watchblox-date">Released Sep 29, 2026</span> · <a href="https://github.com/omggSarahhwastaken/Watchblox/releases" target="_blank" rel="noopener">Full release notes</a></p>
+      </article>
+
+    </div>
   </section>
 
   <section id="features">
@@ -294,7 +340,9 @@
 
   <section id="faq">
     <h2 class="reveal">FAQ</h2>
-    <div class="faq reveal">
+    <input id="faq-search" class="faq-search reveal" type="search" placeholder="Search the FAQ — try “SmartScreen”, “login”, or “updates”…" aria-label="Search FAQ">
+    <p id="faq-none" class="note" hidden>No questions match that search — try a different word, or ask on GitHub.</p>
+    <div class="faq reveal" id="faq-list">
       <details>
         <summary>Are both apps really free?</summary>
         <p>Yes. No cost, no ads, no paywall, no accounts. Download, install, use them.</p>
@@ -344,6 +392,37 @@ document.querySelectorAll('.copy').forEach(function(b){
     });
   });
 });
+/* FAQ search: filter questions live as you type */
+var faqInput=document.getElementById('faq-search');
+var faqNone=document.getElementById('faq-none');
+if(faqInput){
+  faqInput.addEventListener('input', function(){
+    var q=faqInput.value.trim().toLowerCase();
+    var shown=0;
+    document.querySelectorAll('#faq-list details').forEach(function(d){
+      var match=!q || d.textContent.toLowerCase().indexOf(q)>-1;
+      d.hidden=!match;
+      if(match) shown++;
+    });
+    if(faqNone) faqNone.hidden=shown>0;
+  });
+}
+/* What's New: refresh from GitHub's latest release; static text above stays if this fails */
+function loadWhatsNew(repo, prefix){
+  fetch('https://api.github.com/repos/omggSarahhwastaken/'+repo+'/releases/latest')
+    .then(function(r){ if(!r.ok) throw new Error('no release'); return r.json(); })
+    .then(function(d){
+      var title=document.getElementById(prefix+'-title');
+      var body=document.getElementById(prefix+'-body');
+      var date=document.getElementById(prefix+'-date');
+      if(title && d.tag_name) title.textContent=d.tag_name;
+      if(body && d.body) body.textContent=d.body.length>700 ? d.body.slice(0,700).trim()+'…' : d.body;
+      if(date && d.published_at) date.textContent='Released '+new Date(d.published_at).toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});
+    })
+    .catch(function(){});
+}
+loadWhatsNew('SarahsToolkit','wn-toolkit');
+loadWhatsNew('Watchblox','wn-watchblox');
 var io=new IntersectionObserver(function(entries){
   entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
 },{threshold:.12});
