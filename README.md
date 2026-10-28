@@ -1,4 +1,4 @@
-# Sarah — Apps & Projects
+# Sarah's Workshop
 
 My personal site: about me, plus free downloads for **Sarah's Toolkit** and **Watchblox**.
 
